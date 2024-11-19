@@ -33,7 +33,7 @@ This project implements a **Marketing Mix Modeling (MMM)** analysis to help busi
    ```
 3. Install required dependencies:
    ```
-   pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    ```
 
 ---

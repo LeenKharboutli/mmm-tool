@@ -1,1 +1,5 @@
 pandas
+seaborn
+matplotlib
+scikit-learn
+statsmodels
