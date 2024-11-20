@@ -1,12 +1,19 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import warnings
-warnings.filterwarnings('ignore')
+from sklearn.preprocessing import MinMaxScaler
+
+# NOTE: do we need just one fitted scaler? How does this work...? 
+scaler = MinMaxScaler()
 
 def preprocess_df(df):
-    # Data Preprocessing
+    """Performs feature engineering on input df.
+
+    Args:
+        df (pandas.core.frame.DataFrame): Unprocessed sample_media_spend_data dataframe
+
+    Returns:
+        pandas.core.frame.DataFrame: Modified dataframe
+    """
+ 
     df['date'] = pd.to_datetime(df['calendar_week'])
     df['day'] = [x.day for x in df['date']]
     df['week'] = df['date'].dt.isocalendar().week.astype('int')
@@ -14,27 +21,17 @@ def preprocess_df(df):
     df['year'] = [x.year for x in df['date']]
     return df
 
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-columns_to_scale = ['paid_views', 'organic_views', 'google_impressions',
-       'email_impressions', 'facebook_impressions', 'affiliate_impressions',
-       'overall_views', 'day', 'week', 'month', 'year',
-       'paid_views_0.1', 'paid_views_0.3', 'organic_views_0.1',
-       'organic_views_0.3', 'google_impressions_0.1', 'google_impressions_0.3',
-       'email_impressions_0.1', 'email_impressions_0.3',
-       'facebook_impressions_0.1', 'facebook_impressions_0.3',
-       'affiliate_impressions_0.1', 'affiliate_impressions_0.3',
-       'overall_views_0.1', 'overall_views_0.3', 'month_1', 'month_10',
-       'month_11', 'month_12', 'month_2', 'month_3', 'month_4', 'month_5',
-       'month_6', 'month_7', 'month_8', 'month_9', 'division_A', 'division_B',
-       'division_C', 'division_D', 'division_E', 'division_F', 'division_G',
-       'division_H', 'division_I', 'division_J', 'division_K', 'division_L',
-       'division_M', 'division_N', 'division_O', 'division_P', 'division_Q',
-       'division_R', 'division_S', 'division_T', 'division_U', 'division_V',
-       'division_W', 'division_X', 'division_Y', 'division_Z']
+def encoding_categorical_features(df, columns_to_scale):
+    """Encodes categorical features, then scales all target columns.
 
-def encoding_categorical_features(df):
-    # Encoding Categorical Features
+    Args:
+        df (pandas.core.frame.DataFrame): The input dataframe
+        columns_to_scale (list): Columns from the dataframe we need to scale
+
+    Returns:
+        pandas.core.frame.DataFrame: Encoded and rescaled df
+    """
+
     dummy_df = df[['month','division']].copy()
     dummy_df['month']= dummy_df['month'].astype('str')
     dummy_df = pd.get_dummies(dummy_df).astype('float')

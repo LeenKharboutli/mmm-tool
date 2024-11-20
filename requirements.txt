@@ -6,3 +6,4 @@ statsmodels
 streamlit
 plotly
 numpy
+pyyaml
