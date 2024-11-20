@@ -53,7 +53,7 @@ This project implements a **Marketing Mix Modeling (MMM)** analysis to help busi
 3. Scenario Planning - Simulate multiple marketing mix scenarios and visualize their impact:
 
     ```
-    python scenario_planning.py
+    streamlit run app.py 
     ```
 
 ---
