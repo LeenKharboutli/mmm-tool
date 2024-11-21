@@ -1,6 +1,6 @@
-# **Marketing Mix Modeling and Forecasting Tool**
+# **Marketing Mix Modeling and Analysis Tool**
 
-This project implements a **Marketing Mix Modeling (MMM)** analysis to help businesses estimate the impact of their marketing activities and forecast sales or revenue based on historical data. The tool allows for **scenario planning** and **strategic decision-making** by integrating MMM predictions with external variables like seasonality and economic indicators.
+This project implements a **Marketing Mix Modeling (MMM)** analysis to help businesses estimate the impact of their marketing activities and provide information on expected ROI as a function of increased marketing spend. It will also include features to forecast sales or revenue based on historical data. The tool allows for **scenario planning** and **strategic decision-making** by integrating MMM predictions with external variables like seasonality and economic indicators.
 
 ---
 
@@ -10,10 +10,14 @@ This project implements a **Marketing Mix Modeling (MMM)** analysis to help busi
    - Builds a regression model to estimate the contribution of marketing channels (e.g., TV, Social Media, Digital) to sales.
    - Includes support for external factors like seasonality.
 
-2. **Forecasting**:
+2. **ROI Analysis Dashboard**:
+   - Per channel, computes an alternative scenario where spend is increased by 10%, and computes ROI
+   - Visualizes the results in a Streamlit app
+
+2. **Forecasting (WIP)**:
    - Predicts future sales or revenue based on customizable marketing spends and external variables.
 
-3. **Scenario Planning**:
+3. **Scenario Planning (WIP)**:
    - Allows users to simulate different marketing mix scenarios to optimize strategy and budget allocation.
    - Visualizes the impact of different scenarios for informed decision-making.
 
@@ -41,16 +45,16 @@ This project implements a **Marketing Mix Modeling (MMM)** analysis to help busi
 ## Usage
 1. Run MMM Analysis: Prepare your data or use the provided dummy dataset to build an MMM model:
     ```
-    python mmm_analysis.py
+    /mmm-tool/analysis/marketing-mix-modelling.ipynb
     ```
 
 2. Forecast Sales: Use the tool to predict future sales based on marketing spends and external variables:
 
     ```
-    python forecast.py
+    PYTHONPATH=$PYTHONPATH:<path-to-project>/mmm-tool streamlit run src/ui/app.py
     ```
 
-3. Scenario Planning - Simulate multiple marketing mix scenarios and visualize their impact:
+3. Scenario Planning (WIP) - Simulate multiple marketing mix scenarios and visualize their impact:
 
     ```
     streamlit run app.py 

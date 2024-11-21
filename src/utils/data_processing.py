@@ -1,8 +1,4 @@
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
-
-# NOTE: do we need just one fitted scaler? How does this work...? 
-scaler = MinMaxScaler()
 
 def preprocess_df(df):
     """Performs feature engineering on input df.
@@ -39,5 +35,4 @@ def encoding_categorical_features(df, columns_to_scale):
     mmxdf= dummy_df.drop(['date','division','calendar_week'], axis=1)
     missing_columns = [col for col in columns_to_scale if col not in mmxdf.columns]
     mmxdf[missing_columns] = 0
-    mmxdf[columns_to_scale] = scaler.fit_transform(mmxdf[columns_to_scale])
     return mmxdf
